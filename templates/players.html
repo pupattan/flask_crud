@@ -29,7 +29,7 @@ $.ajax({
             success: function(data){
                 if(data && data.length){
                     $.each( data, function( index, value ) {
-                        var $tr = '<tr><td>'+value.identifier+'</td><td>'+value.firstName+'</td><td>'+value.lastName+'</td><td>'+value.imageUri+'</td>';
+                        var $tr = '<tr><td>'+value.identifier+'</td><td>'+value.firstName+'</td><td>'+value.lastName+'</td><td><img src="'+value.imageUri+'" height="30" width="30"></img></td>';
                         {% if admin %}
                            $tr += '<td><a class="btn btn-info btn-sm" href="/edit-player/'+value.identifier+'" >Edit</a>&nbsp;<a class="btn btn-danger btn-sm" href="/delete-player/'+value.identifier+'">Delete</a></td>';
                         {% endif %}

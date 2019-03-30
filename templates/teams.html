@@ -31,7 +31,7 @@ $.ajax({
             success: function(data){
                 if(data && data.length){
                     $.each( data, function( index, value ) {
-                        var $tr = '<tr onclick="window.location.href=\'/team/'+value.identifier+'/players\'"><td>'+value.identifier+'</td><td>'+value.name+'</td><td>'+value.logoUri+'</td>';
+                        var $tr = '<tr onclick="window.location.href=\'/team/'+value.identifier+'/players\'"><td>'+value.identifier+'</td><td>'+value.name+'</td><td><img src="'+value.logoUri+'" height="30" width="30"></img></td>';
                         {% if admin %}
                             $tr += '<td><a class="btn btn-info btn-sm" href="/edit-team/'+value.identifier+'" >Edit</a>&nbsp;<a class="btn btn-danger btn-sm" href="/delete-team/'+value.identifier+'">Delete</a></td>';
                         {% endif %}

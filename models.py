@@ -13,7 +13,7 @@ class Team(db.Model):
         return {
             'identifier': self.id,
             'name': self.name,
-            'logoUri': '<img src="{}" height="30" width="30"></img>'.format(self.logo_uri),
+            'logoUri': self.logo_uri,
         }
 
 
@@ -32,6 +32,6 @@ class Player(db.Model):
             'identifier': self.id,
             'firstName': self.firstname,
             'lastName': self.lastname,
-            'imageUri': '<img src="{}" height="30" width="30"></img>'.format(self.image_uri),
+            'imageUri': self.image_uri,
             'team_id': self.team_id,
         }

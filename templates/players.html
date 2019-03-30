@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block card_header %} Players {% endblock %}
+{% block content %}
+    <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>imageUri</th>
+          {% if admin %}
+        <th>Action</th>
+          {% endif %}
+      </tr>
+    </thead>
+    <tbody id="tBody">
+
+
+    </tbody>
+  </table>
+{% endblock %}
+{% block head %}
+<script>
+$(document).ready(function() {
+$.ajax({
+            type: "GET",
+            url: "/api/team/{{team_id}}/players",
+            dataType: "json",
+            success: function(data){
+                if(data && data.length){
+                    $.each( data, function( index, value ) {
+                        var $tr = '<tr><td>'+value.identifier+'</td><td>'+value.firstName+'</td><td>'+value.lastName+'</td><td>'+value.imageUri+'</td>';
+                        {% if admin %}
+                           $tr += '<td><a class="btn btn-info btn-sm" href="/edit-player/'+value.identifier+'" >Edit</a>&nbsp;<a class="btn btn-danger btn-sm" href="/delete-player/'+value.identifier+'">Delete</a></td>';
+                        {% endif %}
+                        $('#tBody').append($tr);
+                    });
+                }
+                else{
+
+                    $('#tBody').append('<tr><td><h5>No data found</h5></td></tr>');
+                }
+            },
+          error: function (xhr, ajaxOptions, thrownError) {
+            $('#tBody').append('<tr><td><h5>No data found</h5></td></tr>');
+          }
+        });
+});
+</script>
+{% endblock %}

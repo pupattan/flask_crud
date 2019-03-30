@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block card_header %} Add Player {% endblock %}
+{% block content %}
+    <form  method="POST" class="form-horizontal">
+        <div class="form-group row">
+        <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-10">
+          <input required id="firstname" type="text" name="firstname" class="form-control" value="{{form.firstname}}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="lastname" class="col-sm-2 col-form-label">Last name</label>
+        <div class="col-sm-10">
+          <input required id="lastname" type="text" name="lastname" class="form-control" value="{{form.lastname}}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="image_uri" class="col-sm-2 col-form-label">Image Uri</label>
+        <div class="col-sm-10">
+
+        <input required id="image_uri" type="url" name="image_uri" class="form-control" value="{{form.image_uri}}">
+        </div>
+      </div>
+        <div class="form-group row">
+        <label for="lastname" class="col-sm-2 col-form-label">Select Team</label>
+        <div class="col-sm-10">
+
+        <select required class="form-control" name="team_id">
+            {% for team in teams %}
+            <option value="{{team.id}}" >{{team.name}}</option>
+            {% endfor %}
+        </select>
+
+        </div>
+
+      </div>
+    <button class="btn btn-success">Submit</button>
+    </form>
+{% endblock %}

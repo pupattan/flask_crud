@@ -57,8 +57,8 @@ def logout():
 
 @app.route('/')
 def index():
-    #return render_template('index.html')
-    return redirect(url_for('.teams'))
+    return render_template('teams.html')
+    #return redirect(url_for('.teams'))
 
 
 @app.route('/add-team', methods=["GET", "POST"])

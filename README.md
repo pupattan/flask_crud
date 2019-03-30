@@ -20,3 +20,6 @@ $ python manage.py db upgrade
 ### Run 
 $ python app.py  
 
+### Admin login credentials
+username - admin
+password - pass1234
